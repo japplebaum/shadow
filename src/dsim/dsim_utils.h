@@ -32,6 +32,10 @@
 #include "evtracker.h"
 #include "btree.h"
 
+/* need to make sure there is enough space for large DSIM files
+ * this roughly corresponds to the number of lines in the DSIM file */
+#define YYMAXDEPTH 100000
+
 /**
  * Returns the type of a named variable.
  */

@@ -256,17 +256,18 @@ size_t pipecloud_write(pipecloud_tp pipecloud, unsigned int dest, char * data, s
 		rv = mq_timedsend(destq->descriptor, data, data_size, 0, &ts);
 
 		/* if it failed, there better not be space there! */
-		if(rv < 0) {
-			struct mq_attr attrs;
-			if(mq_getattr(destq->descriptor, &attrs) != 0) {
-				perror("mq_getattr");
-			}
-			if(attrs.mq_maxmsg > attrs.mq_curmsgs) {
-				/* explode. something happened to our descriptor. did our
-				 * virtual descriptors loop around? */
-				printfault(EXIT_UNKNOWN, "pipecloud_write: fatal descriptor error - timeout occurred even though there is space in the message queue!");
-			}
-		}
+//		if(rv < 0) {
+//			int theerror = errno;
+//			struct mq_attr attrs;
+//			if(mq_getattr(destq->descriptor, &attrs) != 0) {
+//				perror("mq_getattr");
+//			}
+//			if(attrs.mq_maxmsg > attrs.mq_curmsgs) {
+//				/* explode. something happened to our descriptor. did our
+//				 * virtual descriptors loop around? */
+//				printfault(EXIT_UNKNOWN, "pipecloud_write: fatal descriptor (mq_timedsend error %i) - timeout occurred even though there is space in the message queue!", theerror);
+//			}
+//		}
 	}
 
 	return data_size;

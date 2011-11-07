@@ -38,8 +38,8 @@
 #define PIPECLOUD_MODE_BLOCK 1
 #define PIPECLOUD_MODE_POLL 0
 
-#define PIPECLOUD_TIMEOUT_SEC 0
-#define PIPECLOUD_TIMEOUT_NSEC 10000000
+#define PIPECLOUD_TIMEOUT_SEC 5
+#define PIPECLOUD_TIMEOUT_NSEC 0
 
 typedef struct pipecloud_buffer_t {
 	size_t len;

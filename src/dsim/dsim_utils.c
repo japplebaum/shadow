@@ -168,8 +168,9 @@ void dsim_destroy(dsim_tp dsim) {
 	while((cur_op=evtracker_get_nextevent(dsim->oplist, NULL, 1)))
 		dsim_destroy_operation(cur_op);
 
-	/* destroy all variables */
-	dsim_vartracker_destroy(dsim->vartracker);
+	/* destroy all variables
+	 * FIXME this segfaults */
+//	dsim_vartracker_destroy(dsim->vartracker);
 
 	/* destroy op evtracker */
 	evtracker_destroy(dsim->oplist);
